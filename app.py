@@ -89,6 +89,7 @@ def predict():
 	return treatment_likelihood
 
 if __name__ == "__main_":
+	st.markdown("Mental health disorder analysis", unsafe_allow_html=True)
 	app.debug = False
 	from werkzeug.serving import run_simple
 	run_simple("localhost", 5000, app)
