@@ -38,26 +38,16 @@ from mlxtend.classifier import StackingClassifier
 
 # model evaluation and validation 
 from sklearn import metrics
-from sklearn.metrics import accuracy_score, mean_squared_error, precision_recall_curve
+from sklearn.metrics import accuracy_score, mean_squared_error, precision_recall_curve, confusion_matrix
 from sklearn.model_selection import cross_val_score
 
-# for db connection
-import sqlite3
-db_filename="database.db"
+
 
 # for saving/loading the ML model
 import pickle
 model_filename="models/model.pkl"
 
 # to bypass warnings in the jupyter notebook
-import warnings
-from pandas.core.common import SettingWithCopyWarning
-warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
-
-warnings.filterwarnings("ignore",category=UserWarning)
-warnings.filterwarnings("ignore",category=DeprecationWarning)
-warnings.filterwarnings("ignore",category=FutureWarning)
-warnings.filterwarnings("ignore",category=PendingDeprecationWarning)
 
 app=Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
@@ -89,7 +79,7 @@ def predict():
 	return treatment_likelihood
 
 if __name__ == "__main_":
-	st.markdown("Mental health disorder analysis", unsafe_allow_html=True)
+	
 	app.debug = False
 	from werkzeug.serving import run_simple
 	run_simple("localhost", 5000, app)
